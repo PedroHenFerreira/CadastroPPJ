@@ -23,6 +23,8 @@ public class PPJ {
         System.out.print("Data de ingresso (dd/mm/aaaa): ");
         Date dataIngresso = sdf.parse(sc.next());
 
+        sc.nextLine();
+
         System.out.print("Escola e ano escolar (Escola - X ano): ");
         String escolaAnoEscolar = sc.nextLine();
 
@@ -55,14 +57,14 @@ public class PPJ {
 
         String caminho = "C:\\Aluno\\" + alunoPPJ.getNome() + ".txt";
 
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter(caminho, true))) {
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(caminho))) {
             bw.write("Nome: " + alunoPPJ.getNome());
             bw.newLine();
 
             bw.write("Idade: " + alunoPPJ.getIdade());
             bw.newLine();
 
-            bw.write("Data de nascimento: " + alunoPPJ.getDataNascimento());
+            bw.write("Data de nascimento: " + sdf.format(alunoPPJ.getDataNascimento()));
             bw.newLine();
 
             bw.write("Escola e ano escolar: " + alunoPPJ.getEscolaAnoEscolar());
@@ -71,7 +73,7 @@ public class PPJ {
             bw.write("Telefone dx alunx: " + alunoPPJ.getTelefoneAluno());
             bw.newLine();
 
-            bw.write("Data de ingresso: " + alunoPPJ.getDataIngresso());
+            bw.write("Data de ingresso: " + sdf.format(alunoPPJ.getDataIngresso()));
             bw.newLine();
 
             bw.write(String.format("Mensalidade: R$%.2f", alunoPPJ.getMensalidade()));
@@ -94,6 +96,8 @@ public class PPJ {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        System.out.println(alunoPPJ.getEscolaAnoEscolar());
 
         sc.close();
 
